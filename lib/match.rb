@@ -11,8 +11,8 @@ class Match
     @current_strike_player_id = @player_ids[0]
     @next_player_ids = [@player_ids[3], @player_ids[2]]
     @scorecard = {}
-    Player.all.map(&:name).each do |n|
-      @scorecard[n] = {"balls_played": 0, "runs_scored": 0}
+    Player.all.each do |n|
+      @scorecard[n.name] = {"balls_played": 0, "runs_scored": 0, "id": n.id}
     end
   end
 
@@ -28,6 +28,7 @@ class Match
       # Player got out
       if @next_player_ids.empty?
         # Match Over
+        @current_player_ids.delete(@current_strike_player_id)
         return "Chennai", ball_result
       else
         # Get next player to strike

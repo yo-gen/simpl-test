@@ -10,7 +10,8 @@
     <h4>Score Card</h4>
     <br>
     <% @m.scorecard.each do |name, score| %>
-      <text class=""><%= "#{name} - #{score[:runs_scored]} (#{score[:balls_played]} balls)" %></text>
+      <% strike = @m.current_player_ids.include?(score[:id]) ? "*" : "" %>
+      <text><%= "#{name} - #{score[:runs_scored]} #{strike} (#{score[:balls_played]} balls)" %></text>
       <br />
     <% end %>
     <br>
