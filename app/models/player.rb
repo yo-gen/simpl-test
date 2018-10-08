@@ -1,4 +1,7 @@
 class Player < ApplicationRecord
+    # Calling this function on a player instance returns a number between 0..7
+    # 0..6 represent the runs scored. 7 represents OUT.
+    # This is the weighted random number generation as per probabilities as asked in the question.
     def next_ball_result
       mapping = {"zero_prob": 0, "one_prob": 1, "two_prob": 2, "three_prob": 3, "four_prob": 4, "five_prob": 5, "six_prob": 6, "out_prob": 7}
       weighted = self.attributes.slice("zero_prob", "one_prob", "two_prob", "three_prob", "four_prob", "five_prob", "six_prob", "out_prob")
@@ -10,6 +13,7 @@ class Player < ApplicationRecord
       end
     end
     
+    # Getting the sum of weights for weighted random number generation
     def sum_of_weights(weighted)
       weighted.inject(0) { |sum, (item, weight)| sum + weight }
     end

@@ -4,12 +4,13 @@
     <h4><%= @result %><h4>
     <br>
     <h4>Score Card</h4>
+    <br>
     <% @m.scorecard.each do |name, score| %>
       <text class=""><%= "#{name} - #{score[:runs_scored]} (#{score[:balls_played]} balls)" %></text>
       <br />
     <% end %>
     <br>
-    <h4 class="display-4">Commentary</h4>
+    <h4>Commentary</h4>
     <% @commentary.each_with_index do |comment, index| %>
       <% if index % 7 == 0 %>
         <br>
