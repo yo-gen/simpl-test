@@ -1,5 +1,6 @@
 class SimplController < ApplicationController
   def front_page
+    @players = Player.all
   end
 
   def sim_match

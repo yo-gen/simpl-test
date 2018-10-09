@@ -1,10 +1,34 @@
 <div class="row">
-  <div class="col-sm-8 offset-sm-2">
+  <div class="col-md-12">
     <br>
     <h3>Bangalore vs Chennai</h3>
     <br>
     <h3>Match Simulation</h3>
     <br>
     <%= link_to "Simulate Match", sim_match_path, class: "btn btn-primary"  %>
+    <br><br>
+
+    <% @players.each do |player| %>
+      <% @player = player %>
+      <%= simple_form_for(@player, wrapper: :inline_form, html: { class: 'form-inline' }) do |f| %>
+
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+        <h4><%= @player.name %></h4>
+        <div class="form-inputs">
+          <%= f.input :zero_prob, placeholder: "Zero Probability" %>
+          <%= f.input :one_prob, placeholder: "One Probability" %>
+          <%= f.input :two_prob, placeholder: "Two Probability" %>
+          <%= f.input :three_prob, placeholder: "Three Probability" %>
+          <%= f.input :four_prob, placeholder: "Four Probability" %>
+          <%= f.input :five_prob, placeholder: "Five Probability" %>
+          <%= f.input :six_prob, placeholder: "Six Probability" %>
+          <%= f.input :out_prob, placeholder: "Out Probability" %>
+          <%= f.button :submit %>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,21 @@
+
+<%= simple_form_for(@player) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :zero_prob %>
+    <%= f.input :one_prob %>
+    <%= f.input :two_prob %>
+    <%= f.input :three_prob %>
+    <%= f.input :four_prob %>
+    <%= f.input :five_prob %>
+    <%= f.input :six_prob %>
+    <%= f.input :out_prob %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
